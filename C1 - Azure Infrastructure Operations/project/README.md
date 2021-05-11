@@ -14,10 +14,10 @@ Before getting started, I created a policy that ensures all indexed resources ar
 
 It was created in the terminal (first screenshot) but also visible in the Azure portal (second screenshot). The policy is written in a `policy.json` file.
 
-*Terminal:
+- Terminal:
 ![tagging-policy](./policy/tagging-policy.png)
 
-*Portal:
+- Portal:
 ![tagging-policy-portal](./policy/tagging-policy-portal.png)
 
 ### Packer
@@ -44,7 +44,7 @@ ManagedImageId: /subscriptions/939dXXXX/resourceGroups/udacity-rg/providers/Micr
 ManagedImageLocation: germanywestcentral
 ````
 
-*Portal:
+- Portal:
 ![packer](./packer/packer.png)
 
 ### Terraform
