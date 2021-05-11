@@ -14,8 +14,10 @@ Before getting started, I created a policy that ensures all indexed resources ar
 
 It was created in the terminal (first screenshot) but also visible in the Azure portal (second screenshot). The policy is written in a `policy.json` file.
 
+Terminal:
 ![tagging-policy](./policy/tagging-policy.png)
 
+Portal:
 ![tagging-policy-portal](./policy/tagging-policy-portal.png)
 
 ### Packer
@@ -24,12 +26,23 @@ As a second step, I used Packer to create a server image in order to support the
 Instructions:
 1. Log in to Azure CLI: `az login`.
 2. Create Azure resource group for the server image: `az group create`. Alternatively done in the Azure portal.
-3. Create Azure credentials: `az ad sp create-for-rbac`.
+3. Create Azure credentials for service principal: `az ad sp create-for-rbac`.
 4. Define `server.json` packer template: This template builds an Ubuntu 16.04 LTS image, installs NGINX, then deprovisions the VM.
-5. Set variabales: Either using the command line, using a file or using environment variables. I used the latter and set my environment variables as temporarily by using the `export` command in the terminal.
+5. Set variabales: Either use the command line, use a file or use environment variables. I used the latter and set my environment variables as temporarily by using the `export` command in the terminal.
 6. Build packer image by running `packer build server.json` in the terminal.
 
-Once it is finishe building the packer image, you can see in the portal as following:
+````=> Wait completed after 6 minutes 55 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> azure-arm: Azure.ResourceManagement.VMImage:
+
+OSType: Linux
+ManagedImageResourceGroupName: udacity-rg
+ManagedImageName: udacityPackerImage
+ManagedImageId: /subscriptions/939dXXXX/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage
+ManagedImageLocation: germanywestcentral````
+
+Portal:
 ![packer](./packer/packer.png)
 
 ### Terraform
