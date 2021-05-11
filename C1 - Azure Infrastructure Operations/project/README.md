@@ -14,10 +14,10 @@ Before getting started, I created a policy that ensures all indexed resources ar
 
 It was created in the terminal (first screenshot) but also visible in the Azure portal (second screenshot). The policy is written in a `policy.json` file.
 
-Terminal:
+*Terminal:
 ![tagging-policy](./policy/tagging-policy.png)
 
-Portal:
+*Portal:
 ![tagging-policy-portal](./policy/tagging-policy-portal.png)
 
 ### Packer
@@ -31,7 +31,8 @@ Instructions:
 5. Set variabales: Either use the command line, use a file or use environment variables. I used the latter and set my environment variables as temporarily by using the `export` command in the terminal.
 6. Build packer image by running `packer build server.json` in the terminal.
 
-````=> Wait completed after 6 minutes 55 seconds
+````
+=> Wait completed after 6 minutes 55 seconds
 
 ==> Builds finished. The artifacts of successful builds are:
 --> azure-arm: Azure.ResourceManagement.VMImage:
@@ -40,9 +41,10 @@ OSType: Linux
 ManagedImageResourceGroupName: udacity-rg
 ManagedImageName: udacityPackerImage
 ManagedImageId: /subscriptions/939dXXXX/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage
-ManagedImageLocation: germanywestcentral````
+ManagedImageLocation: germanywestcentral
+````
 
-Portal:
+*Portal:
 ![packer](./packer/packer.png)
 
 ### Terraform
