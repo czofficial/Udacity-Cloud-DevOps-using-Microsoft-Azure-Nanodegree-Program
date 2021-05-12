@@ -11,14 +11,14 @@ data "azurerm_image" "packer-image" {
 
 #Create resource group
 resource "azurerm_resource_group" "main" {
-  name     = "${var.prefix}TFRG"
+  name     = "${var.prefix}-TFRG"
   location = var.location
   tags     = var.tags
 }
 
 # Create network security group and rules
 resource "azurerm_network_security_group" "main" {
-  name                = "${var.prefix}TFNSG"
+  name                = "${var.prefix}-TFNSG"
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
   tags                = var.tags
@@ -54,7 +54,7 @@ resource "azurerm_network_security_rule" "ruleDenyAllVnetInboundFromInternet" {
 
 # Create virtual network
 resource "azurerm_virtual_network" "main" {
-  name                = "${var.prefix}TFVnet"
+  name                = "${var.prefix}-TFVnet"
   address_space       = ["10.0.0.0/16"]
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
@@ -63,7 +63,7 @@ resource "azurerm_virtual_network" "main" {
 
 # Create subnet
 resource "azurerm_subnet" "main" {
-  name                 = "${var.prefix}TFSubnet"
+  name                 = "${var.prefix}-TFSubnet"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.1.0/24"]
@@ -78,31 +78,31 @@ resource "azurerm_subnet_network_security_group_association" "main" {
 # Create network interface
 resource "azurerm_network_interface" "main" {
     count               = var.VMnum
-    name                = "${var.prefix}NIC-${count.index}"
+    name                = "${var.prefix}-NIC-${count.index}"
     location            = var.location
     resource_group_name = azurerm_resource_group.main.name
     tags                = var.tags
 
   ip_configuration {
-        name                          = "${var.prefix}NICConfg"
+        name                          = "internal"
         subnet_id                     = azurerm_subnet.main.id
         private_ip_address_allocation = "dynamic"
-        public_ip_address_id          = azurerm_public_ip.main.id
+        primary                       = true
     }
 }
 
 # Create public IP
 resource "azurerm_public_ip" "main" {
-  name                = "${var.prefix}TFPublicIP"
+  name                = "${var.prefix}-TFPublicIP"
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   tags                = var.tags
 }
 
 # Create load balancer
 resource "azurerm_lb" "main" {
-  name                = "${var.prefix}LB"
+  name                = "${var.prefix}-LB"
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
   tags                = var.tags
@@ -156,32 +156,27 @@ resource "azurerm_availability_set" "main" {
 # Create a Linux virtual machine
 resource "azurerm_virtual_machine" "main" {
   count                 = var.VMnum
-  name                  = "${var.prefix}TFVM-${count.index}"
+  name                  = "${var.prefix}-TFVM-${count.index}"
   location              = var.location
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [element(azurerm_network_interface.main.*.id, count.index)]
   availability_set_id   = azurerm_availability_set.main.id
   vm_size               = "Standard_DS1_v2"
   tags                  = var.tags
-  
-  source_image_id       = data.azurerm_image.packer-image.id
+
+  storage_image_reference {
+   id = data.azurerm_image.packer-image.id
+ }
   
   storage_os_disk {
-    name              = "${var.prefix}OsDisk-${count.index}"
+    name              = "${var.prefix}-OsDisk-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Premium_LRS"
   }
 
-  storage_image_reference {
-      publisher = "Canonical"
-      offer     = "UbuntuServer"
-      sku       = "18.04-LTS"
-      version   = "latest"
-  }
-
   os_profile {
-    computer_name  = "${var.prefix}TFVM"
+    computer_name  = "${var.prefix}-TFVM"
     admin_username = var.admin_username
     admin_password = var.admin_password
   }
@@ -189,12 +184,11 @@ resource "azurerm_virtual_machine" "main" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
-
 }
 
 resource "azurerm_managed_disk" "main" {
   count                = var.VMnum
-  name                 = "data-disk-${count.index}"
+  name                 = "${var.prefix}-datadisk-${count.index}"
   location             = var.location
   resource_group_name  = azurerm_resource_group.main.name
   storage_account_type = "Standard_LRS"
