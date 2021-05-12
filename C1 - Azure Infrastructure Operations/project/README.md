@@ -399,7 +399,7 @@ Terraform will perform the following actions:
         }
 
       + storage_image_reference {
-          + id      = "/subscriptions/939d1c66-7864-4f15-8560-5c793c4110c8/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage"
+          + id      = "/subscriptions/939dXXXX/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage"
           + version = (known after apply)
         }
 
@@ -462,7 +462,7 @@ Terraform will perform the following actions:
         }
 
       + storage_image_reference {
-          + id      = "/subscriptions/939d1c66-7864-4f15-8560-5c793c4110c8/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage"
+          + id      = "/subscriptions/939dXXXX/resourceGroups/udacity-rg/providers/Microsoft.Compute/images/udacityPackerImage"
           + version = (known after apply)
         }
 
@@ -525,6 +525,7 @@ Changes to Outputs:
 `````
 
 ## Output
+### Terraform
 When executing `terraform apply solution.plan`, the URL of the web server will be shown at the end of the whole creation process.
 `````
 Apply complete! Resources: 23 added, 0 changed, 0 destroyed.
@@ -534,11 +535,11 @@ Outputs:
 lb_url = "http://20.52.239.110/"
 `````
 
-#### Azure Web Server
+### Azure Web Server
 This is a screenshot of the deployed Web Server when calling the public IP of the load balancer:
 ![url](./terraform/url.png)
 
-#### Resource Group in Azure Portal
+### Resource Group in Azure Portal
 This is a screenshot of the created resource group with all deployed resources:
 ![portal](./terraform/portal.png)
 
