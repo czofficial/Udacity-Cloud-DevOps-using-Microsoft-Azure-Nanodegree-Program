@@ -543,5 +543,4 @@ This is a screenshot of the deployed Web Server when calling the public IP of th
 This is a screenshot of the created resource group with all deployed resources:
 ![portal](./terraform/portal.png)
 
-- Deletion of the whole Web Server Infrastructure:
-This can be done by executing `terraform destroy` in the terminal.
+- Deletion of the whole Web Server Infrastructure: This can be done by executing `terraform destroy` in the terminal. `terraform show` verifies that everything has been destroyed (empty list as an output).
