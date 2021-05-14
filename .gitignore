@@ -4,4 +4,4 @@ C1 - Azure Infrastructure Operations/project/terraform/.terraform/providers/regi
 C1 - Azure Infrastructure Operations/project/terraform/.terraform.lock.hcl
 C1 - Azure Infrastructure Operations/project/terraform/terraform.tfstate
 C1 - Azure Infrastructure Operations/project/terraform/terraform.tfstate.backup
-.gitignore
+C1 - Azure Infrastructure Operations/project/terraform/.terraform.tfstate.lock.info

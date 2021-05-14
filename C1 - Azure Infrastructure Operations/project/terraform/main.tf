@@ -24,22 +24,22 @@ resource "azurerm_network_security_group" "main" {
   tags                = var.tags
 }
 
-resource "azurerm_network_security_rule" "ruleAllowHTTPVnetInboundFromInternet" {
-    name                       = "AllowHTTPVnetInboundFromInternet"
+resource "azurerm_network_security_rule" "Allow_VNet_Traffic" {
+    name                       = "VNet_Traffic"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
+    protocol                   = "TCP"
+    source_port_range          = "1001"
+    destination_port_range     = "*"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
     resource_group_name         = azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
 }
 
-resource "azurerm_network_security_rule" "ruleDenyAllVnetInboundFromInternet" {
-    name                       = "DenyAllVnetInboundFromInternet"
+resource "azurerm_network_security_rule" "Deny_Internet_Traffic" {
+    name                       = "Internet_Traffic"
     priority                   = 1002
     direction                  = "Inbound"
     access                     = "Deny"
