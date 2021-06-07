@@ -18,6 +18,9 @@ This project is part of the Udacity Cloud DevOps using Microsoft Azure Nanodegre
 * A link to a spreadsheet that includes the original and final project plan>
 
 
+[Trello](https://trello.com/b/fkjm3q3o/building-a-ci-cd-pipeline-in-azure)
+
+
 ## Instructions
 <TODO:  
 * Architectural Diagram (Shows how key parts of the system work)>
