@@ -1,12 +1,12 @@
 # Building a CI/CD Pipeline in Azure
 
 * [Overview](#overview)
-* [Project-Plan](#project-plan)
+* [Project Plan](#project-plan)
 * [Issues](#issues)
-* [Continious-Delivery](#continious-delivery)
+* [Continious Delivery](#continious-delivery)
 
 ## Overview
-This project is part of the Udacity Cloud DevOps using Microsoft Azure Nanodegree Program.\
+This project is part of the Udacity Cloud DevOps using Microsoft Azure Nanodegree Program.
 
 In this project, I'll build a CI/CD pipeline in Azure, using a pre-trained machine learning model about house price predictions in Boston. The focus of this project is clearly on the build, test, deploy and operationalising part, rather than on the actual machine learning model. The link to the Kaggle dataset can be found [here](https://www.kaggle.com/c/boston-housing).
 
@@ -30,7 +30,7 @@ As it is critical to have an effective project plan and task tracking, I created
 * A link to the screencast can be found [here](link).
 
 ## Issues
-As I wasn't aware of the fact that GitHub Actions works best when all the necessary code is in the root directory of the repo, I came across of some difficulties since this repo consists of two independent projects. As a solution, I integrated the initial CI part of this project in this repo, and the actual machine learning CI/CD pipeline in a completely independent one. This is the reason, why I also have duplicate files in this repo (root and C2 folder).
+As I wasn't aware of the fact that GitHub Actions works best when all the necessary code is in the root directory of the repo, I came across of some difficulties since this repo consists of two independent projects. As a solution, I integrated the initial CI part of this project in this repo, and the actual machine learning CI/CD pipeline in a completely independent one. This is the reason, why I also have duplicate files in the root and C2 folder.
 
 ## Continious Delivery
 ### Setup of Azure Cloud Shell
