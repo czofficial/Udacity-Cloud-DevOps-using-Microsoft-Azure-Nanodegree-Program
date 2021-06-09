@@ -27,7 +27,7 @@ As it is critical to have an effective project plan and task tracking, I created
 
 * A link to the Trello board for the project can be found [here](https://trello.com/b/fkjm3q3o/building-a-ci-cd-pipeline-in-azure).
 * A link to the spreadsheet that includes the original and final project plan can be found [here](./project-plan.xlsx).
-* A link to the screencast can be found [here](link).
+* A link to the screencast can be found [here](https://www.dropbox.com/s/q6chi0zrlntl4v6/Udacity_Cloud-DevOps_with_MS-Azure_Project-02_Screen-Recording.mov?dl=0).
 
 ## Issues
 As I wasn't aware of the fact that GitHub Actions works best when all the necessary code is in the root directory of the repo, I came across of some difficulties since this repo consists of two independent projects. As a solution, I integrated the initial CI part of this project in this repo, and the actual machine learning CI/CD pipeline in a completely independent one. This is the reason, why I also have duplicate files in the root and C2 folder.
