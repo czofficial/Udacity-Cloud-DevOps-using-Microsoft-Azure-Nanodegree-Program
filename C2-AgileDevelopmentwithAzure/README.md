@@ -32,6 +32,8 @@ As it is critical to have an effective project plan and task tracking, I created
 ## Issues
 As I wasn't aware of the fact that GitHub Actions works best when all the necessary code is in the root directory of the repo, I came across of some difficulties since this repo consists of two independent projects. As a solution, I integrated the initial CI part of this project in this repo, and the actual machine learning CI/CD pipeline in a completely independent one. This is the reason, why I also have duplicate files in the root and C2 folder.
 
+The second and main part of this project can be found [here](https://github.com/czofficial/Building-a-CICD-Pipeline-in-Azure).
+
 ## Continious Delivery
 ### Setup of Azure Cloud Shell
 - Create GitHub repo (in my case: use this already exisiting one)
